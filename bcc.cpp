@@ -3,7 +3,7 @@
 #include <json/json.h>
 #include "include/bcc.h"
 
-BccMessage::BccMessage(const std::string input)
+BccMessage::BccMessage(std::string input)
 {
 	char header[5];
 
@@ -12,7 +12,7 @@ BccMessage::BccMessage(const std::string input)
 		throw BccMessageInitException(1);
 	// Copy the header and check if it's valid
 	strncpy(header, input.c_str(), 5);
-	if (header != "-BCC-")
+	if (strncmp(header, "-BCC-", 5) != 0)
 		throw BccMessageInitException(2);
 	json_object *json = json_tokener_parse(input.substr(5).c_str());
 	json_object_object_foreach(json, key, val)
