@@ -3,7 +3,7 @@
 #include <json/json.h>
 #include "include/bcc.h"
 
-BccMessage::BccMessage(std::string input)
+BccMessage::BccMessage(const std::string input)
 {
 	char header[5];
 
@@ -33,7 +33,7 @@ BccMessage::BccMessage(std::string input)
 	}
 }
 
-BccMessage::BccMessage(char inVersion[6], char inNick[26], char inIpAddr[40], std::string inMessage)
+BccMessage::BccMessage(const char *inVersion, const char *inNick, const char *inIpAddr, const std::string inMessage)
 {
 	strncpy(bccVersion, inVersion, 5);
 	bccVersion[6] = '\0';

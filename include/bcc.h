@@ -13,8 +13,8 @@ class BccMessage
 		char ipAddr[40];
 		std::string msg;
 	public:
-		BccMessage(std::string input);
-		BccMessage(char inVersion[6], char inNick[26], char inIpAddr[40], std::string inMessage);
+		BccMessage(const std::string input);
+		BccMessage(const char *inVersion, const char *inNick, const char *inIpAddr, const std::string inMessage);
 		char* getBccVersion();
 		char* getNick();
 		char* getIp();
