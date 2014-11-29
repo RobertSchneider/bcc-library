@@ -1,5 +1,5 @@
-SRC = bcc.cpp
-OBJS = $(SRC:.cpp=.o)
+SRC = bcc.c
+OBJS = $(SRC:.c=.o)
 CLEAN = rm
 INSTALLDIR = /usr/lib/
 LIBNAME = libbcc.so
@@ -12,7 +12,7 @@ CC = gcc
 default: build clean
 
 build:
-	$(CC) $(INCLUDES) $(CCFLAGS) -c $(SRC)
+	$(CC) $(INCLUDES) $(CCFLAGS) -c $(SRC) -g
 	$(CC) $(CCLIBFLAG) -o $(LIBNAME) $(OBJS)
 
 clean:

@@ -1,5 +1,4 @@
-/*
- * libbcc - libbcc header file - libbcc.h
+/*bbcc - libbcc header file - libbcc.h
  *
  * Copyright 2014 Oliver Springer
  *
@@ -18,37 +17,23 @@
  * along with libbcc.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <iostream>
-#include <cstring>
 #include <json/json.h>
 
 #ifndef _BCC_H_
 #define _BCC_H_
 #define BCCVERSION "1.0"
 
-class BccMessage
+struct BccMessage
 {
-	private:
-		char bccVersion[6];
-		char nick[26];
-		char ipAddr[40];
-		std::string msg;
-	public:
-		BccMessage(std::string input);
-		BccMessage(const char *inNick, const char *inIpAddr, const std::string inMessage);
-		char* getBccVersion();
-		char* getNick();
-		char* getIp();
-		std::string getMsg();
-		std::string encodeMessage();
+	char bccVersion[6];
+	char nick[26];
+	char ipAddr[40];
+	char *msg;
 };
 
-class BccMessageInitException
-{
-	private:
-		int eID;
-	public:
-		BccMessageInitException(int input);
-		int getEID();
-};
+int parseMessage(char* data, struct BccMessage* bccmsg);
+struct BccMessage* createMessage(char *inNick, char *inIpAddr, char *inMessage);
+char* encodeMessage(struct BccMessage *bccmsg);
+
 #endif
+
